@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 class PDFPage extends StatefulWidget {
   final String imgPath;
   final int num;
-  final double bottomPadding;
+  final double? bottomPadding;
 
   PDFPage(this.imgPath, this.num, this.bottomPadding);
 
