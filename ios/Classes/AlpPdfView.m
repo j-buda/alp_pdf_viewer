@@ -31,6 +31,8 @@
     PDFDocument *_pdf;
     NSString* _filePath;
     int _endOfDocumentSpacing;
+    
+    //NSNumber* _pageCount;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame viewIdentifier:(int64_t)viewId arguments:(id _Nullable)args binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
@@ -45,7 +47,7 @@
         _endOfDocumentSpacing = [args[@"endOfDocumentSpacing"] integerValue];
 
         [self openFileFromPath];
-
+        
         if (_pdf == nil) {
             [_channel invokeMethod:@"onError" arguments:@{@"error" : @"Cannot open PDF document"}];
         } else {
