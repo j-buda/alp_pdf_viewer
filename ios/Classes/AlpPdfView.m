@@ -68,8 +68,6 @@
     _pdfView.displayMode = kPDFDisplaySinglePageContinuous;
     _pdfView.autoScales = true;
     _pdfView.document = _pdf;
-    _pdfView.autoresizesSubviews = YES;
-    _pdfView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _pdfView.minScaleFactor = _pdfView.scaleFactorForSizeToFit;
     _pdfView.maxScaleFactor = 4.0;
 
@@ -104,6 +102,10 @@
 //MARK: - PDFViewDelegate
 - (void)PDFViewWillClickOnLink:(PDFView *)sender withURL:(NSURL *)url {
     [_channel invokeMethod:@"onLinkHandler" arguments:url.absoluteString];
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return _pdfView;
 }
 
 @end
