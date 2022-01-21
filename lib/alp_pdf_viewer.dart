@@ -1,8 +1,13 @@
+library alp_pdf_viewer;
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+
+export 'src/document.dart' show PDFDocument;
+export 'src/page.dart' show PDFPage;
 
 typedef PDFViewCreatedCallback = void Function(PDFViewController controller);
 typedef EndOfDocumentCallback = void Function();
