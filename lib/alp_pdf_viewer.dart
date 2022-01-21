@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
@@ -35,12 +36,23 @@ class _AlpPdfViewerState extends State<AlpPdfViewer> {
 
   @override
   Widget build(BuildContext context) {
-    return UiKitView(
-      viewType: 'plugins.alpian.com/pdfview',
-      onPlatformViewCreated: _onPlatformViewCreated,
-      creationParams: _CreationParams.fromWidget(widget).toMap(),
-      creationParamsCodec: const StandardMessageCodec(),
-    );
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      return AndroidView(
+        viewType: 'plugins.alpian.com/pdfview',
+        onPlatformViewCreated: _onPlatformViewCreated,
+        creationParams: _CreationParams.fromWidget(widget).toMap(),
+        creationParamsCodec: const StandardMessageCodec(),
+      );
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return UiKitView(
+        viewType: 'plugins.alpian.com/pdfview',
+        onPlatformViewCreated: _onPlatformViewCreated,
+        creationParams: _CreationParams.fromWidget(widget).toMap(),
+        creationParamsCodec: const StandardMessageCodec(),
+      );
+    }
+    return Text(
+        '$defaultTargetPlatform is not yet supported by the pdfview_flutter plugin');
   }
 
   void _onPlatformViewCreated(int id) {
