@@ -29,4 +29,17 @@ class PDFDocument {
 
     return document;
   }
+
+  static Future<PDFDocument> getTestFile({int numberOfPages = 1}) async {
+    final file = File('dummy.png');
+    PDFDocument document = PDFDocument();
+    document._filePath = file.path;
+    try {
+      var pageCount = numberOfPages;
+      document.count = document.count = int.parse(pageCount.toString());
+    } catch (e) {
+      throw Exception('Error reading PDF!');
+    }
+    return document;
+  }
 }
