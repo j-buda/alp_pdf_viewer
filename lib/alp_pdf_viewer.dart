@@ -24,7 +24,7 @@ class AlpPdfViewer extends StatefulWidget {
   const AlpPdfViewer({
     Key? key,
     this.filePath,
-    this.endOfDocumentSpacing = 0,
+    this.endOfDocumentSpacing = 1,
     this.onEndOfDocument,
     this.onLinkHandler,
     this.onError,

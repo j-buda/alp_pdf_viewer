@@ -1,0 +1,26 @@
+name: alp_pdf_viewer_example
+description: Demonstrates how to use the alp_pdf_viewer plugin.
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  path_provider: ^2.0.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  alp_pdf_viewer:
+    path: ../
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sample.pdf
+    - assets/single-page.pdf
+    - assets/multi-page.pdf
