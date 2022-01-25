@@ -48,7 +48,7 @@ public class AlpPdfView implements PlatformView, MethodCallHandler {
                 .onPageChange(new OnPageChangeListener() {
                     @Override
                     public void onPageChanged(int page, int total) {
-                        if ((page+1) >= total) {
+                        if (total > 1 && (page+1) >= total) {
                             Map<String, Object> args = new HashMap<>();
                             methodChannel.invokeMethod("onEndOfDocumentReached", args);
                         }
